@@ -1,0 +1,28 @@
+name: Build and Deploy to GitHub Pages
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4.2.2
+      - name: Set up Node.js
+        uses: actions/setup-node@4.2.0
+        with:
+          node-version: '22'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@4.6.1
+        with:
+          name: static-files
+          path: dist/
+        
+        
+      
