@@ -23,7 +23,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          name: static-files
           path: dist/
           
   deploy:
@@ -39,7 +38,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5
-        with:
-          artifact_name: static-files
     
       
