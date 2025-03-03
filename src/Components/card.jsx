@@ -6,15 +6,15 @@ import { FaReply } from "react-icons/fa";
 import { MdDelete,MdMode } from "react-icons/md";
 import Editor from "./Editor"
 import ReplyBox from "./ReplyBox";
+import { getImageURL } from "../utils";
 
 const Card=({user,score,id,parentId=null,replyingTo:replyingToUserName,content,createdAt})=>{
 
     const {currentUser:{username:currentUserName},replyingToID,setReplyingTo,setEditID,editID,setRemoveID}=useContext(appContext);
-
     return <>
         <blockquote className="bg-white mb-4 p-4 rounded grid grid-cols-[auto_1fr] gap-x-2 gap-y-3 sm:grid-cols-[2.25rem_auto] sm:gap-x-5" >
             <div className="flex gap-x-3 items-center col-span-full sm:col-start-2 sm:row-start-1">
-                <img src={user.image.png} alt="user image" className="w-8" />
+                <img src={getImageURL(user.image.png)} alt={user.username} className="w-8" />
                 <p className="font-rubik font-bold">{user.username}
                 {user.username===currentUserName && 
                     <span className="ml-1 font-rubik font-medium px-1 py-px rounded-sm text-white text-xs bg-moderate_blue">you</span>
